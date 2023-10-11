@@ -1,4 +1,6 @@
-const employeesConfig = [
+import { IEmployee } from "../types/common.types"
+
+export const employeesConfig: IEmployee[] = [
   {
     id: 1,
     name: "Илья Емельянов",
