@@ -1,0 +1,15 @@
+.employees-page {
+  h1 {
+    margin: 30px 0;
+    text-align: center;
+  }
+
+  .employees-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    margin: 0 auto;
+    max-width: 600px;
+  }
+}
