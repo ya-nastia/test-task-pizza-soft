@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectEmployee } from '../../store/employees-selectors';
 import { IEmployee } from '../../types/common.types';
 import { editEmployeeAC } from '../../store/employees-reducer';
-import { notifySuccess } from '../../utils/notify';
+import { notifyError, notifySuccess } from '../../utils/notify';
 import EmployeeForm from '../../components/EmployeeForm/EmployeeForm';
+import { isCompleteBirthday, isCompletePhoneNumber } from '../../utils/validation';
 
 const EditPage: React.FC = () => {
   let { id } = useParams();
@@ -40,16 +41,20 @@ const EditPage: React.FC = () => {
   }, []);
 
   const handleSubmitEdit = useCallback(() => {
-    const editedEmployee: IEmployee = {
-      id: employee.id,
-      name,
-      phone,
-      birthday,
-      role,
-      isArchive,
-    };
-    dispatch(editEmployeeAC(editedEmployee));
-    notifySuccess();
+    if (name && isCompletePhoneNumber(phone) && isCompleteBirthday(birthday)) {
+      const editedEmployee: IEmployee = {
+        id: employee.id,
+        name,
+        phone,
+        birthday,
+        role,
+        isArchive,
+      };
+      dispatch(editEmployeeAC(editedEmployee));
+      notifySuccess();
+    } else {
+      notifyError('All Fields Are Required');
+    }
   }, [birthday, dispatch, employee.id, isArchive, name, phone, role]);
   
   return (
