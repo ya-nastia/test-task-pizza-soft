@@ -15,7 +15,7 @@ const EmployeeCard: React.FC<IEmployeeCard> = ({ id, name, role, phone }) => {
         <h5 className="card-title">{name}</h5>
         <p className="card-text">Role: {role}</p>
         <p className="card-text">Phone Number: {phone}</p>
-        <Link to={`/${id}`} className="btn btn-primary">Edit</Link>
+        <Link to={`/edit-employee/${id}`} className="btn btn-primary">Edit</Link>
       </div>
     </div>
   )

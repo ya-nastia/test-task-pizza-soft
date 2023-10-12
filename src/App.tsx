@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<EmployeesPage />} />
-        <Route path="/:id" element={<EditPage />} />
+        <Route path="/edit-employee/:id" element={<EditPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer />
