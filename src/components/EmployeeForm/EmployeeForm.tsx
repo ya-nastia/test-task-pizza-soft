@@ -78,9 +78,9 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
       </div>
 
       <select className="form-select" value={role} onChange={handleRoleChange}>
-        <option value="Повар">Повар</option>
-        <option value="Официант">Официант</option>
-        <option value="Водитель">Водитель</option>
+        <option value="cook">Повар</option>
+        <option value="waiter">Официант</option>
+        <option value="driver">Водитель</option>
       </select>
 
       <div className="form-check m-3">
