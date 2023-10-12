@@ -17,6 +17,7 @@ const EmployeesPage: React.FC = () => {
             return (
               <EmployeeCard 
                 key={employee.id}
+                id={employee.id}
                 name={employee.name}
                 role={employee.role}
                 phone={employee.phone} 
