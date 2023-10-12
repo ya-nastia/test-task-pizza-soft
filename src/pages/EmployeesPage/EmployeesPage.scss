@@ -4,6 +4,24 @@
     text-align: center;
   }
 
+  .filter-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin: 0 auto 20px;
+    max-width: 600px;
+  }
+
+  .form-select {
+    max-width: 200px;
+    margin-right: 8px;
+  }
+
+  button {
+    width: 100%;
+  }
+
   .employees-list {
     display: flex;
     flex-direction: column;
