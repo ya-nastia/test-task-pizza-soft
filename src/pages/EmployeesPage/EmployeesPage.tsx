@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { selectEmployees } from "../../store/employees-selectors";
 import EmployeeCard from "../../components/EmployeeCard/EmployeeCard";
 import './EmployeesPage.scss';
+import { Link } from "react-router-dom";
 
 const EmployeesPage: React.FC = () => {
   const employees = useSelector(selectEmployees);
@@ -86,6 +87,10 @@ const EmployeesPage: React.FC = () => {
 
         <button onClick={handleSortConfirm} className="btn btn-primary">Sort</button>
 
+      </div>
+
+      <div className="create-employee-link">
+        <Link to='/create-employee' className="btn btn-primary">Add New Employee +</Link>
       </div>
 
       <div className="employees-list">

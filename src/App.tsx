@@ -5,6 +5,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import EditPage from './pages/EditPage/EditPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CreateEmployeePage from './pages/CreateEmployeePage/CreateEmployeePage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<EmployeesPage />} />
         <Route path="/edit-employee/:id" element={<EditPage />} />
+        <Route path="/create-employee" element={<CreateEmployeePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer />

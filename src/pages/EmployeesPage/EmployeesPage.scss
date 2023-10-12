@@ -20,6 +20,19 @@
 
   button {
     width: 100%;
+
+    text-transform: uppercase;
+  }
+
+  .create-employee-link {
+    max-width: 600px;
+    margin: 0 auto 20px;
+
+    & a {
+      width: 100%;
+
+      text-transform: uppercase;
+    }
   }
 
   .employees-list {
