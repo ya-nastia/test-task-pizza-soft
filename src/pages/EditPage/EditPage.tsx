@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import './EditPage.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEmployee } from '../../store/employees-selectors';
@@ -11,14 +11,21 @@ import { isCompleteBirthday, isCompletePhoneNumber } from '../../utils/validatio
 
 const EditPage: React.FC = () => {
   let { id } = useParams();
+  const navigate = useNavigate();
   const employee = useSelector(selectEmployee(Number(id)));
   const dispatch = useDispatch();
 
-  const [name, setName] = useState(employee.name);
-  const [phone, setPhone] = useState(employee.phone);
-  const [birthday, setBirthday] = useState(employee.birthday);
-  const [role, setRole] = useState(employee.role);
-  const [isArchive, setIsArchive] = useState(employee.isArchive);
+  const [name, setName] = useState(employee ? employee.name : '');
+  const [phone, setPhone] = useState(employee ? employee.phone : '');
+  const [birthday, setBirthday] = useState(employee ? employee.birthday : '');
+  const [role, setRole] = useState(employee ? employee.role : '');
+  const [isArchive, setIsArchive] = useState(employee ? employee.isArchive : false);
+
+  useEffect(() => {
+    if (!id || isNaN(Number(id)) || !employee) {
+      navigate('/');
+    }
+  }, [id, employee]);
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -55,7 +62,7 @@ const EditPage: React.FC = () => {
     } else {
       notifyError('All Fields Are Required');
     }
-  }, [birthday, dispatch, employee.id, isArchive, name, phone, role]);
+  }, [birthday, dispatch, employee, isArchive, name, phone, role]);
   
   return (
     <div className='edit-page'>

@@ -13,7 +13,7 @@ const employeesReducer = (state = inititalState, action: IAddEmployeeAction | IE
   switch (action.type) {
     case ADD_EMPLOYEE:
       const newEmployee: IEmployee = {
-        id: state.employees.length,
+        id: state.employees.length + 1,
         ...action.payload,
       };
       return {
