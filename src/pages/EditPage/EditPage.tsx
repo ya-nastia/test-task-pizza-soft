@@ -1,14 +1,14 @@
 import React, { useCallback, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './EditPage.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEmployee } from '../../store/employees-selectors';
-import InputMask from 'react-input-mask';
 import { IEmployee } from '../../types/common.types';
 import { editEmployeeAC } from '../../store/employees-reducer';
 import { notifySuccess } from '../../utils/notify';
+import EmployeeForm from '../../components/EmployeeForm/EmployeeForm';
 
-const EditPage = () => {
+const EditPage: React.FC = () => {
   let { id } = useParams();
   const employee = useSelector(selectEmployee(Number(id)));
   const dispatch = useDispatch();
@@ -57,73 +57,19 @@ const EditPage = () => {
 
       <h1>Edit Page</h1>
 
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">Name</label>
-        <input 
-          type="text" 
-          className="form-control" 
-          id="name" 
-          placeholder="Enter your name" 
-          value={name}
-          onChange={handleNameChange}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label htmlFor="phone" className="form-label">Phone</label>
-        <InputMask 
-          mask="+7 (999) 999-99-99" 
-          maskChar="_" 
-          value={phone} 
-          onChange={handlePhoneChange}
-        >
-          <input 
-            className="form-control" 
-            id="phone" 
-            type="tel" 
-            placeholder="Enter your phone number" 
-          />
-        </InputMask>
-      </div>
-
-      <div className="mb-3">
-        <label htmlFor="date" className="form-label">Date Of Birth</label>
-        <InputMask 
-          mask="99.99.9999"
-          maskChar="_" 
-          value={birthday} 
-          onChange={handleBirthdayChange}
-        >
-          <input 
-            className="form-control" 
-            id="phone" 
-            type="text" 
-            placeholder="Enter your birthday" 
-          />
-        </InputMask>
-      </div>
-
-      <select className="form-select" value={role} onChange={handleRoleChange}>
-        <option value="Повар">Повар</option>
-        <option value="Официант">Официант</option>
-        <option value="Водитель">Водитель</option>
-      </select>
-
-      <div className="form-check m-3">
-        <input 
-          className="form-check-input" 
-          type="checkbox" 
-          id="isArhive" 
-          checked={isArchive}
-          onChange={handleIsArchiveChange}
-        />
-        <label className="form-check-label" htmlFor="isArhive">
-          В архиве
-        </label>
-      </div>
-
-      <button className='btn btn-success' onClick={handleSubmitEdit}>Submit</button>
-      <Link to='/' className='btn btn-danger ms-3'>To Home Page</Link>
+      <EmployeeForm 
+        name={name}
+        handleNameChange={handleNameChange}
+        phone={phone}
+        handlePhoneChange={handlePhoneChange}
+        birthday={birthday}
+        handleBirthdayChange={handleBirthdayChange}
+        role={role}
+        handleRoleChange={handleRoleChange}
+        isArchive={isArchive}
+        handleIsArchiveChange={handleIsArchiveChange}
+        handleSubmit={handleSubmitEdit}
+      />
     </div>
   )
 }
