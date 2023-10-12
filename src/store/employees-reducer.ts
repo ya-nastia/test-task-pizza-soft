@@ -1,9 +1,9 @@
 import { employeesConfig } from "../config/employees";
-import { IEmployee } from "../types/common.types";
+import { IEmployee, INewEmployee } from "../types/common.types";
 import { IAddEmployeeAction, IEditEmployeeAction } from "../types/actions.types";
 
-const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
-const EDIT_EMPLOYEE = 'EDIT_EMPLOYEE';
+export const ADD_EMPLOYEE = 'ADD_EMPLOYEE';
+export const EDIT_EMPLOYEE = 'EDIT_EMPLOYEE';
 
 const inititalState = {
   employees: employeesConfig,
@@ -12,9 +12,13 @@ const inititalState = {
 const employeesReducer = (state = inititalState, action: IAddEmployeeAction | IEditEmployeeAction) => {
   switch (action.type) {
     case ADD_EMPLOYEE:
+      const newEmployee: IEmployee = {
+        id: state.employees.length,
+        ...action.payload,
+      };
       return {
         ...state,
-        employees: [...state.employees, action.payload],
+        employees: [...state.employees, newEmployee],
       }
     case EDIT_EMPLOYEE:
       return {
@@ -31,7 +35,7 @@ const employeesReducer = (state = inititalState, action: IAddEmployeeAction | IE
   }
 };
 
-export const addEmployeeAC = (employee: IEmployee): IAddEmployeeAction => ({
+export const addEmployeeAC = (employee: INewEmployee): IAddEmployeeAction => ({
   type: ADD_EMPLOYEE,
   payload: employee,
 });

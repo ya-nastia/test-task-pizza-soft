@@ -1,12 +1,13 @@
 import { Action } from "redux";
-import { IEmployee } from "./common.types";
+import { IEmployee, INewEmployee } from "./common.types";
+import { ADD_EMPLOYEE, EDIT_EMPLOYEE } from "../store/employees-reducer";
 
 export interface IAddEmployeeAction extends Action {
-  type: string;
-  payload: IEmployee;
+  type: typeof ADD_EMPLOYEE;
+  payload: INewEmployee;
 }
 
 export interface IEditEmployeeAction extends Action {
-  type: string;
+  type: typeof EDIT_EMPLOYEE;
   payload: IEmployee;
 }
