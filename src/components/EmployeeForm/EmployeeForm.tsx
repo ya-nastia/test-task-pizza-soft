@@ -97,7 +97,7 @@ const EmployeeForm: React.FC<IEmployeeFormProps> = ({
       </div>
 
       <button className='btn btn-success' onClick={handleSubmit}>Submit</button>
-      <Link to='/' className='btn btn-danger ms-3'>To Home Page</Link>
+      <Link to='/test-task-pizza-soft' className='btn btn-danger ms-3'>To Home Page</Link>
     </div>
   )
 }

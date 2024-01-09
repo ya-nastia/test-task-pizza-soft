@@ -90,7 +90,7 @@ const EmployeesPage: React.FC = () => {
       </div>
 
       <div className="create-employee-link">
-        <Link to='/create-employee' className="btn btn-primary">Add New Employee +</Link>
+        <Link to='/test-task-pizza-soft/create-employee' className="btn btn-primary">Add New Employee +</Link>
       </div>
 
       <div className="employees-list">

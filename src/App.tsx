@@ -11,9 +11,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<EmployeesPage />} />
-        <Route path="/edit-employee/:id" element={<EditPage />} />
-        <Route path="/create-employee" element={<CreateEmployeePage />} />
+        <Route path="/test-task-pizza-soft" element={<EmployeesPage />} />
+        <Route path="/test-task-pizza-soft/edit-employee/:id" element={<EditPage />} />
+        <Route path="/test-task-pizza-soft/create-employee" element={<CreateEmployeePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <ToastContainer />

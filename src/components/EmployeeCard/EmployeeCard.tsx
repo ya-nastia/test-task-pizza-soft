@@ -16,7 +16,7 @@ const EmployeeCard: React.FC<IEmployeeCard> = ({ id, name, role, phone }) => {
         <h5 className="card-title">{name}</h5>
         <p className="card-text"><b>Role:</b> <span>{role}</span></p>
         <p className="card-text"><b>Phone Number:</b> <span>{phone}</span></p>
-        <Link to={`/edit-employee/${id}`} className="btn btn-primary">Edit</Link>
+        <Link to={`/test-task-pizza-soft/edit-employee/${id}`} className="btn btn-primary">Edit</Link>
       </div>
     </div>
   )
